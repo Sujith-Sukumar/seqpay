@@ -3,14 +3,18 @@
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Menu, X, Sparkles } from "lucide-react"
+import Image from "next/image"
 
 const navLinks = [
-  { name: "Features", href: "#features" },
-  { name: "How It Works", href: "#how-it-works" },
-//   { name: "Pricing", href: "#pricing" },
-  { name: "Testimonials", href: "#testimonials" },
-  { name: "FAQ", href: "#faq" },
-  { name: "Contact", href: "#contact" },
+  { name: "Home", href: "home" },
+  { name: "Services Menu", href: "servicesmenu" },
+  // { name: "How It Works", href: "how-it-works" },
+//   { name: "Pricing", href: "pricing" },
+  // { name: "Testimonials", href: "testimonials" },
+  { name: "About US", href: "aboutus" },
+  { name: "Contact", href: "contact" },
+
+
 ]
 
 export default function Navbar() {
@@ -25,6 +29,14 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
+  const scrollToSection = (e, sectionId) => {
+    e.preventDefault()
+    const element = document.getElementById(sectionId)
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" })
+    }
+  }
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -33,19 +45,16 @@ export default function Navbar() {
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
-          <a href="#" className="flex items-center gap-2.5 group">
-            <div className="relative w-9 h-9 bg-gradient-to-br from-primary to-blue-600 rounded-xl flex items-center justify-center shadow-lg shadow-primary/25 group-hover:shadow-primary/40 transition-shadow duration-300">
-              <span className="text-white font-bold text-lg">Z</span>
-              <div className="absolute inset-0 rounded-xl bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            </div>
-            <span className="text-xl font-bold text-foreground tracking-tight">ZPay</span>
+          <a href="/" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }) }} className="flex items-center gap-2.5 group">
+            <Image src="/logo.png" alt="Logo" width={250} height={20} className="object-contain " />
           </a>
 
           <div className="hidden md:flex items-center gap-1">
             {navLinks.map((link) => (
               <a
                 key={link.name}
-                href={link.href}
+                href={`#${link.href}`}
+                onClick={(e) => scrollToSection(e, link.href)}
                 className="relative px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200 group"
               >
                 {link.name}
@@ -60,14 +69,14 @@ export default function Navbar() {
               size="sm"
               className="font-medium hover:bg-primary/5 hover:text-primary transition-colors duration-200"
             >
-              Sign In
+              Login In
             </Button>
             <Button
               size="sm"
               className="font-medium bg-gradient-to-r from-primary to-blue-600 hover:from-primary/90 hover:to-blue-600/90 shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-all duration-300 btn-shine"
             >
-              <Sparkles className="w-4 h-4 mr-1.5" />
-              Get Started
+              {/* <Sparkles className="w-4 h-4 mr-1.5" /> */}
+              Apply/Enquiry
             </Button>
           </div>
 
@@ -91,9 +100,12 @@ export default function Navbar() {
               {navLinks.map((link, index) => (
                 <a
                   key={link.name}
-                  href={link.href}
+                  href={`#${link.href}`}
                   className="px-4 py-3 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted/50 rounded-lg transition-all duration-200"
-                  onClick={() => setMobileMenuOpen(false)}
+                  onClick={(e) => {
+                    scrollToSection(e, link.href)
+                    setMobileMenuOpen(false)
+                  }}
                   style={{ animationDelay: `${index * 50}ms` }}
                 >
                   {link.name}

@@ -42,7 +42,7 @@ export default function Hero() {
   }
 
   return (
-    <section className="relative pt-24 pb-16 md:pt-32 md:pb-24 overflow-hidden">
+    <section id="home" className="relative pt-24 pb-16 md:pt-32 md:pb-24 overflow-hidden">
       <div className="absolute inset-0 -z-10">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-pulse" />
         <div
@@ -79,7 +79,7 @@ export default function Hero() {
             </p>
           </FadeIn>
 
-          <FadeIn delay={0.3}>
+          {/* <FadeIn delay={0.3}>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button
                 size="lg"
@@ -97,7 +97,7 @@ export default function Hero() {
                 Watch Demo
               </Button>
             </div>
-          </FadeIn>
+          </FadeIn> */}
 
           <FadeIn delay={0.4}>
             <div className="flex flex-wrap items-center justify-center gap-6 md:gap-8 mt-10 text-sm text-muted-foreground">
@@ -117,14 +117,12 @@ export default function Hero() {
           </FadeIn>
         </div>
 
-        <ScaleIn delay={0.5}>
+        {/* <ScaleIn delay={0.5}>
           <div className="mt-16 md:mt-20 relative">
-            {/* Glow effect */}
             <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 via-blue-500/20 to-cyan-500/20 rounded-3xl blur-2xl opacity-60" />
 
             <div className="relative bg-gradient-to-br from-slate-50 to-slate-100 rounded-2xl md:rounded-3xl p-4 md:p-8 border border-border/50 shadow-2xl">
               <div className="bg-background rounded-xl md:rounded-2xl shadow-xl overflow-hidden border border-border/50">
-                {/* Browser chrome */}
                 <div className="h-10 md:h-12 bg-muted/50 flex items-center px-4 gap-2 border-b border-border/50">
                   <div className="flex gap-2">
                     <div className="w-3 h-3 rounded-full bg-red-400 hover:bg-red-500 transition-colors cursor-pointer" />
@@ -138,7 +136,6 @@ export default function Hero() {
                   </div>
                 </div>
 
-                {/* Dashboard content */}
                 <div className="p-6 md:p-8">
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
                     {[
@@ -192,7 +189,7 @@ export default function Hero() {
               </div>
             </div>
           </div>
-        </ScaleIn>
+        </ScaleIn> */}
       </div>
 
       <style jsx>{`
