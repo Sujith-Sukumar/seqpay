@@ -47,6 +47,7 @@ export default function Navbar() {
 
   const scrollToSection = (e, sectionId) => {
     e.preventDefault()
+    window.history.pushState(null, '', `${sectionId}`)
     const element = document.getElementById(sectionId)
     if (element) {
       element.scrollIntoView({ behavior: "smooth", block: "start" })
